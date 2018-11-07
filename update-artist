@@ -6,8 +6,9 @@ if [[ -z $1 && -z $2 ]]; then
     echo "Artist and Album is required.
 Usage:
 $ update-artist 'Etta James' 'The Definitive Collection'"
-fi
 exit 1
+
+fi
 
 for f in *; do
 

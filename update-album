@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Script to update the album arttist of all songs in a directory
+
+if [[ -z $1 ]]; then
+    echo "Album is required.
+Usage:
+$ update-artist 'Etta James' "
+exit 1
+
+fi
+
+for f in *; do
+
+ffmpeg -i "$f" -c copy -metadata album_artist="$1" -metadata album="$1" 2-"$f"
+
+done
