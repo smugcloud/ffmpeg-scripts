@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Script to update the genre of all songs in a directory
+
+if [[ -z $1 ]]; then
+    echo "Genre is required.
+Usage:
+$ update-genre 'Christmas' "
+exit 1
+
+fi
+
+for f in *; do
+
+ffmpeg -i "$f" -c copy -metadata genre="$1" 2-"$f"
+
+done
