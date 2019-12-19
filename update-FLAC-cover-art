@@ -4,7 +4,7 @@
 if [[ -z $1 ]]; then
     echo "Album art file is required.
 Usage:
-$ update-cover-art cover.jpg "
+$ update-FLAC-cover-art cover.jpg "
 exit 1
 
 fi 
@@ -14,6 +14,8 @@ for f in *; do
 if [[ "$f" == *.jpg ]]; then
 	continue
 else
-	ffmpeg -i "$f" -i "$1" -c copy -map 0 -map 1 -metadata:s:v title="Album cover" -metadata:s:v comment="Cover (Front)" 2-"$f"
+
+metaflac --import-picture-from="$1" "$f"
+
 fi
 done
