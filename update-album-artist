@@ -2,7 +2,7 @@
 
 # Script to update the album cover art of all songs in a directory
 
-if [[ -z $1 && -z $2 ]]; then
+if [[ -z $1 ]]; then
     echo "Artist.
 Usage:
 $ update-album-artist 'Etta James'"
@@ -12,6 +12,6 @@ fi
 
 for f in *; do
 
-ffmpeg -i "$f" -c copy -metadata album_artist="$1" 2-"$f"
+ffmpeg -i "$f" -c copy -metadata artist="$1" -metadata album_artist="$1" 2-"$f"
 
 done
