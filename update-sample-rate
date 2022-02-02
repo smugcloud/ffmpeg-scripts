@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Script to update the sample rate of all songs in a directory
+
+if [[ -z $1 ]]; then
+    echo "sample rate (in kHz) is required.
+Usage:
+$ update-sample-rate 48000 "
+exit 1
+
+fi
+
+for f in *; do
+
+ffmpeg -i "$f" -c:a flac -ar $1 2-"$f"
+
+done
