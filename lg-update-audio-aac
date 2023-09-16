@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Script to reencode audio only to work on an LG tv
+
+for f in *; do
+
+ffmpeg -i "$f" -acodec aac -vcodec copy aac-"$f"
+
+done
